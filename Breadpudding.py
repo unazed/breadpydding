@@ -2,13 +2,13 @@ import requests
 
 class Bot(object):
 
-    def __init__(self,nick="Bot",badge="0"):
+    def __init__(self,nick="Bot",badge=None):
         self.s = requests.session()
         self.nick = nick
         self.badge = badge
 
     def send(self,message): # Sends a message.
-        r = self.s.post("http://www.breadpudding.us/api/chat/", data={"fn":"post","nick":self.nick,"message":message,"badge":self.badge})
+        r = self.s.post("http://www.breadpudding.us/api/chat/", data={"fn":"post","nick":self.nick,"badge":self.badge,"message":message})
         return r.status_code
 
 
