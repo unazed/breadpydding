@@ -2,10 +2,10 @@ import requests
 
 class Bot(object):
 
-    def __init__(self):
+    def __init__(self,nick="Bot",badge="0"):
         self.s = requests.session()
-        self.nick = "Bot"
-        self.badge = "0"
+        self.nick = nick
+        self.badge = badge
 
     def send(self,message): # Sends a message.
         r = self.s.post("http://www.breadpudding.us/api/chat/", data={"fn":"post","nick":self.nick,"message":message,"badge":self.badge})
@@ -20,6 +20,7 @@ class Bot(object):
         self.badge = badge
         return badge    
 
-Client = Bot()
+Client = Bot("Nickname","Badge GUID")
 
 # Bot stuff here.
+
